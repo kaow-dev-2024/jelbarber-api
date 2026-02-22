@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "sshOptions": {
+                "port": 22
+            },
+            "server": "postgres.railway.internal",
+            "driver": "PostgreSQL",
+            "database": "railway",
+            "password": "RrnkscFbeiweFjskwgDCXQMisnUhdfjB",
+            "username": "postgres",
+            "group": "postgres",
+            "name": "postgres",
+            "connectString": "postgresql://postgres:RrnkscFbeiweFjskwgDCXQMisnUhdfjB@ballast.proxy.rlwy.net:25956/railway"
+        }
+    ]
+}

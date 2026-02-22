@@ -1,0 +1,370 @@
+{
+  "info": {
+    "_postman_id": "e3b2b8f1-5e0d-4c3d-9f63-1e7f9d1c5a12",
+    "name": "JelBarber API - All Models",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "token", "value": "" },
+    { "key": "id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] }
+      }
+    },
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\",\n  \"name\": \"User Name\",\n  \"phone\": \"0812345678\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api", "auth", "register"] }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Users - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/users", "host": ["{{baseUrl}}"], "path": ["api", "users"] }
+      }
+    },
+    {
+      "name": "Users - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/users/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "users", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Users - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password123\",\n  \"name\": \"New User\",\n  \"phone\": \"0812345678\",\n  \"role\": \"member\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/users", "host": ["{{baseUrl}}"], "path": ["api", "users"] }
+      }
+    },
+    {
+      "name": "Users - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"User Updated\",\n  \"phone\": \"0899999999\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/users/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "users", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Users - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/users/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "users", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Branches - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/branches", "host": ["{{baseUrl}}"], "path": ["api", "branches"] }
+      }
+    },
+    {
+      "name": "Branches - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/branches/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "branches", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Branches - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Main Branch\",\n  \"address\": \"Bangkok\",\n  \"phone\": \"021234567\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/branches", "host": ["{{baseUrl}}"], "path": ["api", "branches"] }
+      }
+    },
+    {
+      "name": "Branches - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"029999999\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/branches/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "branches", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Branches - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/branches/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "branches", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Appointments - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/appointments", "host": ["{{baseUrl}}"], "path": ["api", "appointments"] }
+      }
+    },
+    {
+      "name": "Appointments - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/appointments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Appointments - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"branchId\": 1,\n  \"memberId\": 1,\n  \"employeeId\": 2,\n  \"startAt\": \"2026-02-19T09:00:00.000Z\",\n  \"endAt\": \"2026-02-19T10:00:00.000Z\",\n  \"status\": \"scheduled\",\n  \"notes\": \"Regular\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/appointments", "host": ["{{baseUrl}}"], "path": ["api", "appointments"] }
+      }
+    },
+    {
+      "name": "Appointments - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"completed\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/appointments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Appointments - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/appointments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "appointments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Payments - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/payments", "host": ["{{baseUrl}}"], "path": ["api", "payments"] }
+      }
+    },
+    {
+      "name": "Payments - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/payments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "payments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Payments - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"appointmentId\": 1,\n  \"amount\": 350.00,\n  \"currency\": \"THB\",\n  \"method\": \"cash\",\n  \"status\": \"paid\",\n  \"paidAt\": \"2026-02-19T10:05:00.000Z\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/payments", "host": ["{{baseUrl}}"], "path": ["api", "payments"] }
+      }
+    },
+    {
+      "name": "Payments - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"refunded\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/payments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "payments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Payments - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/payments/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "payments", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Inventory - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/inventory", "host": ["{{baseUrl}}"], "path": ["api", "inventory"] }
+      }
+    },
+    {
+      "name": "Inventory - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/inventory/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "inventory", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Inventory - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"branchId\": 1,\n  \"sku\": \"SKU-001\",\n  \"name\": \"Hair Wax\",\n  \"quantity\": 10,\n  \"unit\": \"pcs\",\n  \"cost\": 120.00\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/inventory", "host": ["{{baseUrl}}"], "path": ["api", "inventory"] }
+      }
+    },
+    {
+      "name": "Inventory - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantity\": 15\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/inventory/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "inventory", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Inventory - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/inventory/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "inventory", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Transection - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/transection", "host": ["{{baseUrl}}"], "path": ["api", "transection"] }
+      }
+    },
+    {
+      "name": "Transection - Get",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/transection/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "transection", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Transection - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"income\",\n  \"amount\": 350.00,\n  \"category\": \"service\",\n  \"note\": \"Haircut\",\n  \"occurredAt\": \"2026-02-19T10:00:00.000Z\",\n  \"method\": \"cash\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/transection", "host": ["{{baseUrl}}"], "path": ["api", "transection"] }
+      }
+    },
+    {
+      "name": "Transection - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Haircut (updated)\",\n  \"amount\": 400.00\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/transection/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "transection", "{{id}}"] }
+      }
+    },
+    {
+      "name": "Transection - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/api/transection/{{id}}", "host": ["{{baseUrl}}"], "path": ["api", "transection", "{{id}}"] }
+      }
+    }
+  ]
+}

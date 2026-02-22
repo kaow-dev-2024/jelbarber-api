@@ -4,7 +4,7 @@ Backend API สำหรับร้านตัดผม รองรับ ส
 
 ## Setup
 1. `cp .env.example .env`
-2. ใส่ค่า Neon PostgreSQL และ `JWT_SECRET`
+2. ใส่ค่า Railway PostgreSQL และ `JWT_SECRET`
 3. `npm install`
 4. `npm run dev`
 
@@ -50,8 +50,16 @@ Base URL: `/api`
 - `PUT /api/inventory/:id`
 - `DELETE /api/inventory/:id`
 
+### Transection
+- `GET /api/transection`
+- `GET /api/transection/:id`
+- `POST /api/transection`
+- `PUT /api/transection/:id`
+- `DELETE /api/transection/:id`
+
 ## Notes
 - ทุก endpoint (ยกเว้น auth) ต้องส่ง `Authorization: Bearer <token>`
 - โมเดลสัมพันธ์กันใน `src/models/index.js`
 - `sequelize.sync()` จะสร้างตารางอัตโนมัติในครั้งแรก
+- Railway จะตั้งค่า `DATABASE_URL`/`PG*` ให้เองตอน deploy; สำหรับ local ให้กำหนด `DATABASE_URL` หรือ `DB_*` เอง
 # jelbarber-api

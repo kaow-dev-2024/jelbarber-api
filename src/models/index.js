@@ -5,6 +5,7 @@ const Branch = require('./Branch')(sequelize);
 const Appointment = require('./Appointment')(sequelize);
 const Payment = require('./Payment')(sequelize);
 const InventoryItem = require('./InventoryItem')(sequelize);
+const Transection = require('./Transection')(sequelize);
 
 Branch.hasMany(Appointment, { foreignKey: 'branchId' });
 Appointment.belongsTo(Branch, { foreignKey: 'branchId' });
@@ -27,5 +28,6 @@ module.exports = {
   Branch,
   Appointment,
   Payment,
-  InventoryItem
+  InventoryItem,
+  Transection
 };
