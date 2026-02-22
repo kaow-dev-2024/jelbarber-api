@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     // เวลาสิ้นสุดนัดหมาย
     endAt: { type: DataTypes.DATE, allowNull: false },
     // สถานะนัดหมาย
-    status: { type: DataTypes.ENUM('scheduled', 'completed', 'cancelled'), allowNull: false, defaultValue: 'scheduled' },
+    status: { type: DataTypes.ENUM('Booked', 'Successful', 'Cancelled'), allowNull: false, defaultValue: 'Booked' },
     // หมายเหตุเพิ่มเติม
     notes: { type: DataTypes.TEXT, allowNull: true }
   }, {

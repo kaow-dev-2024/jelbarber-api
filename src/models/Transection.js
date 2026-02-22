@@ -15,7 +15,9 @@ module.exports = (sequelize) => {
     // วันที่เกิดรายการ
     occurredAt: { type: DataTypes.DATE, allowNull: false },
     // วิธีชำระเงิน
-    method: { type: DataTypes.STRING(30), allowNull: true }
+    method: { type: DataTypes.STRING(30), allowNull: true },
+    // รหัสสาขา
+    branchId: { type: DataTypes.BIGINT, allowNull: false }
   }, {
     tableName: 'transections',
     timestamps: true

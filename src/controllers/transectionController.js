@@ -1,35 +1,52 @@
-const { Transection } = require('../models');
+const { Transection, Branch } = require('../models');
 
 async function list(req, res) {
-  const rows = await Transection.findAll();
+  const rows = await Transection.findAll({
+    include: [
+      {
+        model: Branch,
+        attributes: ['id', 'name', 'address', 'phone', 'isActive'],
+        required: false
+      }
+    ]
+  });
   return res.json(rows);
 }
 
 async function get(req, res) {
-  const row = await Transection.findByPk(req.params.id);
+  const row = await Transection.findByPk(req.params.id, {
+    include: [
+      {
+        model: Branch,
+        attributes: ['id', 'name', 'address', 'phone', 'isActive'],
+        required: false
+      }
+    ]
+  });
   if (!row) return res.status(404).json({ message: 'Not found' });
   return res.json(row);
 }
 
 async function create(req, res) {
-  const { type, amount, category, note, occurredAt, method } = req.body;
-  if (!type || amount === undefined || !category || !occurredAt) {
-    return res.status(400).json({ message: 'type, amount, category, and occurredAt are required' });
+  const { type, amount, category, note, occurredAt, method, branchId } = req.body;
+  if (!type || amount === undefined || !category || !occurredAt || !branchId) {
+    return res.status(400).json({ message: 'type, amount, category, occurredAt, and branchId are required' });
   }
-  const row = await Transection.create({ type, amount, category, note, occurredAt, method });
+  const row = await Transection.create({ type, amount, category, note, occurredAt, method, branchId });
   return res.status(201).json(row);
 }
 
 async function update(req, res) {
   const row = await Transection.findByPk(req.params.id);
   if (!row) return res.status(404).json({ message: 'Not found' });
-  const { type, amount, category, note, occurredAt, method } = req.body;
+  const { type, amount, category, note, occurredAt, method, branchId } = req.body;
   if (type !== undefined) row.type = type;
   if (amount !== undefined) row.amount = amount;
   if (category !== undefined) row.category = category;
   if (note !== undefined) row.note = note;
   if (occurredAt !== undefined) row.occurredAt = occurredAt;
   if (method !== undefined) row.method = method;
+  if (branchId !== undefined) row.branchId = branchId;
   await row.save();
   return res.json(row);
 }

@@ -12,12 +12,21 @@ module.exports = (sequelize) => {
     name: { type: DataTypes.STRING(120), allowNull: false },
     // เบอร์โทรศัพท์
     phone: { type: DataTypes.STRING(30), allowNull: true },
+    // รหัสสาขาที่สังกัด (สำหรับพนักงาน)
+    branchId: { type: DataTypes.BIGINT, allowNull: true },
     // บทบาทผู้ใช้
     role: { type: DataTypes.ENUM('member', 'employee', 'admin'), allowNull: false, defaultValue: 'member' },
     // สถานะการใช้งาน
     isActive: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true }
   }, {
     tableName: 'users',
+    validate: {
+      employeeMustHaveBranch() {
+        if (this.role === 'employee' && !this.branchId) {
+          throw new Error('branchId is required for employee');
+        }
+      }
+    },
     timestamps: true
   });
 

@@ -1,7 +1,14 @@
-const { Appointment } = require('../models');
+const { Appointment,Branch ,User} = require('../models');
+const { all } = require('../routes');
 
 async function list(req, res) {
-  const rows = await Appointment.findAll();
+  const rows = await Appointment.findAll({
+    include: [
+      { model: Branch, attributes: ["id",'name'] },
+      { model: User, as: 'member', attributes: ["id","name"] },
+      { model: User, as: 'employee', attributes: ["id","name"] }
+    ]
+  });
   return res.json(rows);
 }
 
